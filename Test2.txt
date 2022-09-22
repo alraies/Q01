@@ -1,0 +1,1 @@
+SELECT bb.BookId  FROM BoughtBooks bb  GROUP BY bb.BookId HAVING COUNT(bb.BookId)>=3

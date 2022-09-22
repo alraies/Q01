@@ -1,0 +1,17 @@
+  1 -
+
+var x = from d in _context.OrderDetails
+                        where d.UnitPrice > 1000
+                group d by d.OrderId into d2
+                        orderby d2.Key descending
+                        select d2;
+
+---------------------------------------------------------------------------------------------------------------------
+
+         2 -              
+
+                var y = _context.OrderDetails.GroupBy(t => t.OrderId)
+                           .Select(t => new OrderDetail
+                           {
+                               UnitPrice = t.Sum(ta => ta.UnitPrice),
+                           }).ToList();
